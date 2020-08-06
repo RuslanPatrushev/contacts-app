@@ -1,0 +1,70 @@
+<div class="container px-0">
+  <div class="row mx-0 mt-5 mt-md-1 mt-lg-0 w-100">
+    <button type="button" class="btn btn-info btn-sm mr-1 col-auto" (click)="openModal()">
+      Новый контакт
+    </button>
+    <div class="input-group col px-0">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Имя"
+        aria-describedby="search-button"
+        #input
+      >
+    </div>
+  </div>
+  <div *ngIf="filteredContacts" class="bg-white shadow">
+    <div class="row bg-info bg text-light mt-3 rounded-top mx-0 p-1 align-items-center">
+      <div class="col-4 h5 mb-0" (click)="sort('name')">
+        <div class="d-inline cursor-pointer">
+          Имя
+          <img class="sort-icon" [src]="sortName !== 'name' ? 'assets/img/sort.svg' :
+          sortAsc == -1 ? 'assets/img/up-arrow.svg' : 'assets/img/down-arrow.svg'">
+        </div>
+      </div>
+      <div class="col-4 h5 mb-0">
+        <div class="d-inline cursor-pointer" (click)="sort('phone')">
+          Номер телефона
+          <img class="sort-icon" [src]="sortName!=='phone' ? 'assets/img/sort.svg' :
+          sortAsc==-1? 'assets/img/up-arrow.svg' : 'assets/img/down-arrow.svg'">
+        </div>
+      </div>
+      <div class="col-3 h5 mb-0">
+        <div class="d-inline cursor-pointer" (click)="sort('date')">
+          Дата рождения
+          <img class="sort-icon" [src]="sortName!=='date' ? 'assets/img/sort.svg' :
+          sortAsc==-1? 'assets/img/up-arrow.svg' : 'assets/img/down-arrow.svg'">
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let contact of filteredContacts">
+      <div class=" rounded shadow-sm mb-1 py-2 mx-0 hoverContact">
+        <div class="row mx-0">
+          <div class="col-4 cursor-pointer" (click)="openModal(contact)">
+            {{contact.name}}
+          </div>
+          <div class="col-4 cursor-pointer" (click)="openModal(contact)">
+            {{contact.phone}}
+          </div>
+          <div class="col-3 cursor-pointer" (click)="openModal(contact)">
+            {{contact.date | date: 'dd.MM.yyyy'}}
+          </div>
+          <div class="col-1 d-flex justify-content-end">
+            <img src='assets/img/remove.svg' class="delete cursor-pointer"
+                 (click)="deleteContact(contact)">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!contacts?.length" class="row h4 justify-content-center rounded shadow-sm bg-white">
+    Контактов пока нет
+  </div>
+  <div *ngIf="!filteredContacts?.length"
+       class="row h4 justify-content-center rounded shadow-sm bg-white  my-1 py-2 mx-0">
+    Контакты не найдены
+  </div>
+</div>
+
+

@@ -1,0 +1,39 @@
+<div class="container h-100 position-absolute d-flex justify-content-center t-0 r-0 l-0">
+  <div class="col-lg-5 col-md-8 col height-fit-content t-30">
+    <form *ngIf="userForm" class="form-group p-3 bg-white shadow-lg rounded" [formGroup]="userForm">
+      <h5 class="text-center m-0">
+        Вход
+      </h5>
+      <h6 class="mb-1">
+        Введите логин:
+      </h6>
+      <input type="text" class="form-control pl-2" placeholder="Логин" formControlName="userLogin"/>
+      <div class="alert alert-danger py-1 mb-1 pl-2"
+           *ngIf="userForm.controls['userLogin'].invalid && userForm.controls['userLogin'].touched">
+        <div *ngIf="userForm.controls['userLogin'].errors.required">
+          Введите логин
+        </div>
+      </div>
+      
+      <h6 class="mb-1 mt-2">
+        Введите пароль:
+      </h6>
+      <input type="password" class="form-control pl-2" placeholder="Пароль" formControlName="userPassword"/>
+      <div class="alert alert-danger py-1 mb-1 pl-2"
+           *ngIf="userForm.controls['userPassword'].invalid && userForm.controls['userPassword'].touched">
+        Введите пароль
+      </div>
+      <div class="alert alert-danger py-1 mb-1 pl-2"
+           *ngIf="userForm.invalid && userForm.errors?.invalid">
+        <div class="h6">
+          Не удаётся войти.
+        </div>
+        Пожалуйста, проверьте правильность написания логина и пароля.
+      </div>
+
+      <button class="btn btn-outline-info mt-3" type="submit" (click)="auth()" [disabled]="userForm.invalid">
+        Войти
+      </button>
+    </form>
+  </div>
+</div>

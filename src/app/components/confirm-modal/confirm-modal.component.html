@@ -1,0 +1,14 @@
+<div class="modal-header bg-info text-white">
+  <h4 class="modal-title pull-left">Удаление контакта</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  Вы уверены, что хотите удалить контакт?
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="confirm()">Да</button>
+  <button type="button" class="btn btn-default" (click)="closeModal()">Нет</button>
+</div>
+

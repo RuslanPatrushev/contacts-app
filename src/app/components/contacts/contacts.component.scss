@@ -1,0 +1,21 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.sort-icon {
+  height: 10px;
+  width: 10px;
+}
+
+.delete {
+  height: 20px;
+  width: 20px;
+  &:hover {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  }
+}
+.hoverContact {
+  &:hover {
+    background-color: gainsboro;
+  }
+}
